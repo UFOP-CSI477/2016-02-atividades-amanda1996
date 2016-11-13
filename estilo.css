@@ -1,0 +1,17 @@
+	h1 {
+		font-family: tahoma,arial;
+		font-style: bold;
+		color: #3457de;
+	}
+	h4 {
+		font-family: tahoma,arial;
+		color: gray;
+	}
+
+	p {
+		font-family: tahoma,arial;
+	}
+
+	.generica{
+		background-color: #3457de;
+	}
