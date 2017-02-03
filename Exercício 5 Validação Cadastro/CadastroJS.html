@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <title>Validação cadastro JavaScript</title>
+    <script>
+
+      function validar(){
+        if(document.cadastro.nome.length == 0){
+          window.alert("O campo nome deve ser preenchido!");
+          return;
+        }
+        if(document.cadastro.datanasc.value == ""){
+          window.alert("O campo data de nascimento deve ser preenchido!");
+          document.cadastro.datanasc.focus();
+          return;
+        }
+        if(document.cadastro.sexo.value == ""){
+          window.alert("O campo sexo deve ser preenchido!");
+          document.sexo.nome.focus();
+          return;
+        }
+        if(document.cadastro.curso.value == ""){
+          window.alert("O campo curso deve ser preenchido!");
+          document.cadastro.curso.focus();
+          return;
+        }
+
+        if(document.cadastro.matricula.value == ""){
+          window.alert("O campo curso deve ser preenchido!");
+          document.cadastro.matricula.focus();
+          return;
+        }
+
+        if(document.cadastro.senha1.value == ""){
+          window.alert("O campo senha deve ser preenchido!");
+          document.cadastro.senha1.focus();
+          return;
+        }
+        if(document.cadastro.senha2.value == ""){
+          window.alert("O campo confirmação de senha deve ser preenchido!");
+          document.cadastro.senha2.focus();
+          return;
+        }
+
+        if(document.cadastro.senha1.value != document.cadastro.senha2.value){
+          window.alert("As senhas devem ser iguais!");
+        }
+      }
+
+    </script>
+  </head>
+  <body>
+    <h1>Cadastro no Sistema da Universidade</h1>
+    <form name="cadastro" action="cadastroPHP.php" method="POST" class="form-horizontal">
+        <label for="nome" class="control-label col-sm-2">Nome:</label>
+        <input type="text" class="form-control" name="nome">
+        <br>
+        <label for="datanasc" class="control-label col-sm-2">Data de nascimento:</label>
+        <input type="Date" class="form-control" name="datanasc">
+        <br>
+        <label for="sexo" class="control-label col-sm-2">Sexo:</label>
+        <input type="text" class="form-control" name="sexo">
+        <br>
+        <label for="curso" class="control-label col-sm-2">Curso:</label>
+        <input type="text" class="form-control" name="curso">
+        <br>
+        <label for="matricula" class="control-label col-sm-2">Matrícula:</label>
+        <input type="text" class="form-control" name="mactricula">
+        <br>
+        <label for="senha1" class="control-label col-sm-2">Senha:</label>
+        <input type="password" class="form-control" name="senha1">
+        <br>
+        <label for="senha2" class="control-label col-sm-2" style="width = 200px">Digite a senha novamente:</label>
+        <input type="password" class="form-control" name="senha2">
+
+        <input type="submit" onclick="validar()" value="Cadastrar" style="position: center">
+        <br>
+        <label style="margin-top: 200px;color:gray">Amanda Fagundes de Paula                  14.1.8339</label>
+    </form>
+  </body>
+</html>

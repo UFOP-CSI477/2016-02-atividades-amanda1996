@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cadastrar</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap.css">
+</head>
+<body>
+<h4>Amanda Fagundes de Paula			Matrícula: 14.1.8339</h4>
+<h1>Sistema de Cadastro de Usuário</h1>
+	<form name="formCadastro" method="post" action="confirmar.html" class="form-horizontal">
+
+		<label for="matricula" class="control-label col-sm-2">Matrícula: </label>
+		<input class="form-control" type="text"></input>
+		<label for="nome" class="control-label col-sm-2">Nome:</label>
+		<input class="form-control" type="text" name="nome">
+		<label for="rua" class="control-label col-sm-2">Rua:</label>
+		<input class="form-control" type="text" name="rua">
+		<label for="numero" class="control-label col-sm-2">Número:</label>
+		<input class="form-control" type="text" name="numero">
+		<label for="complemento" class="control-label col-sm-2">Complemento:</label>
+		<input class="form-control" type="text" name="complemento">
+		<p>
+		<label for="cidade" class="control-label col-sm-4">Cidade:</label>
+		<select>
+			<option value="1">Nova Era</option>
+			<option value="2">João Monlevade</option>
+			<option value="3">Itabira</option>
+			<option value="4">Belo Horizonte</option>
+		</select>
+		<label for="estado" class="control-label">Estado:</label>
+		<select>
+			<option value="1">Minas Gerais</option>
+			<option value="2">Rio de Janeiro</option>
+			<option value="3">Paraíba</option>
+			<option value="4">São Paulo</option>
+		</select>
+		</p>
+		<label for="cep" class="control-label col-sm-2">CEP:</label>
+		<input class="form-control" type="text" name="cep">
+		<label for="telefone" class="control-label col-sm-2">Telefone:</label>
+		<input class="form-control" type="text" name="telefone">
+		<label for="email" class="control-label col-sm-2">E-mail:</label>
+		<input class="form-control" type="text" name="email">
+		<label for="cpf" class="control-label col-sm-2">CPF:</label>
+		<input class="form-control" type="numer" name="cpf">
+		<label for="usuario" class="control-label col-sm-2">Usuário:</label>
+		<input class="form-control" type="text" name="usuario">
+		<label for="senha" class="control-label col-sm-2">Senha:</label>
+		<input class="form-control" type="password" name="senha">
+		<label for="senha2" class="control-label col-sm-2">Confirma senha:</label>
+		<input class="form-control" type="password" name="confirmasenha">
+		<label for="sexo"  class="control-label col-sm-2">Sexo:</label>
+		<p>
+		<input type="radio" name="genero" value="F">
+		<label for="feminino"  class="control-label">Feminino</label>
+		<input type="radio" name="genero" value="M">
+		<label for="masculino" class="control-label">Masculino</label>
+		</p>
+		<label for="" class="control-label col-sm-2">	Áreas de interesse:</label>
+		<p>
+			<input type="checkbox" name="area">
+			<label for="redes" class="control-label">Redes</label>
+			<input type="checkbox" name="area">
+			<label for="web" class="control-label">Web</label>
+			<input type="checkbox" name="area">
+			<label for="ia" class="control-label">Inteligência Artificial</label>
+			<input type="checkbox" name="area">
+			<label for="bd" class="control-label">Banco de Dados</label>
+		</p>
+		<div class="control-label col-sm-3">
+			<a href="confirmar.html" role="button" class="btn-primary">Confirmar Cadastro</a> 
+			<a href="menu.html" role="butto" class="btn-primary">Voltar</a>
+		</div>
+
+	</form>
+</body>
+</html>
