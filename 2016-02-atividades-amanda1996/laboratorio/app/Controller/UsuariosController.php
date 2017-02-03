@@ -44,7 +44,8 @@ class UsuariosController extends AppController{
         $this->Flash->set('Acesso realizado com sucesso!');
         $this->Session->write('Usuario', $usuario);//nome gravado na sessão
 
-        $this->redirect('/');//redireciona para a página principal
+        $this->redirect(array('controller' => 'usuarios', 'action' => 'index'));//redireciona para a página principal
+
       }
     }else{
       $this->Flash->set('Usuário ou senha incorretos!');
