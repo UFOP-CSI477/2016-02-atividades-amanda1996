@@ -75,12 +75,13 @@ class UserController extends Controller
     {
       $this->validate($request, [
         'name' => 'required',
-        'email' => 'required|unique:users',
         'password' => 'required|min:6|confirmed'
       ]);
 
-
-        $user = User::find($id)->update($request);
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->password = bcrypt($request['password']);
+        $user->save();
     }
 
     /**

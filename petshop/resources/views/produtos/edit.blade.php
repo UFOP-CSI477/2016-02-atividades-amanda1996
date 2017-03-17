@@ -8,7 +8,7 @@
 
 <h1>Editar produto</h1>
 <h3>{{$produto->id}} {{$produto->nome}}</h3>
-<form  class="w3-form" action="/produtos/{{$produto->id}}" method="POST" enctype="multipart/form-data">
+<form  class="w3-form" action="/produtos/{{$produto->id}}" method="post" enctype="multipart/form-data">
     {{method_field('PATCH')}}
     {{ csrf_field() }}
     <label for="preco">Preço: </label>

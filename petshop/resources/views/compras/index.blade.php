@@ -12,8 +12,7 @@
       <th>ID</th>
       <th>Produto</th>
       <th>Valor</th>
-      <th>#</th>
-      <th>#</th>
+      <th>Quantidade</th>
     </tr>
   </thead>
   <tbody>
@@ -22,6 +21,7 @@
         <td>{{$c->id}}</td>
         <td>{{$c->nome}}</td>
         <td>{{$c->preco}}</td>
+        <td>{{$c->quantidade}}</td>
       </tr>
     @endforeach
   </tbody>

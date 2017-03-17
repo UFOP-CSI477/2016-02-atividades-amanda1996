@@ -6,15 +6,16 @@
 
 @section('conteudo')
 <center>
-  <form action="/produtos"  class="w3-form" method="POST" style="padding-bottom:20px" >
+  <form action="add/{{$produto->id}}"  class="w3-form" method="post" style="padding-bottom:20px" >
+    {{ method_field('PATCH')}}
     {{ csrf_field() }}
   <h2>{{ $produto->nome }}</h2>
   <p>
-    <div class="container">
-      <img src="/images/{{$produto->imagem}}"/>
+    <div>
+      <img src="/images/{{$produto->imagem}}" style="max-width:400px;max-height:400px;width:auto;height:auto"/>
     </div>
   </p>
-  <p>Código: {{$produto->id}}</p>
+  <p>Código do produto: {{$produto->id}}</p>
   <input type="hidden" name="produto_id" value="{{$produto->id}}">
   <p>Valor: {{ $produto->preco }} </p>
   <label for="quantidade">Quantidade: </label>

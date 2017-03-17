@@ -11,7 +11,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Editar Perfil</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="PATCH" action="user/home_admin/{{$user->id}}">
+                    <form class="form-horizontal" method="post" action="/user/{{$user->id}}">
+                        {{ method_field('PATCH')}}
                         {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Nome: </label>
@@ -22,20 +23,6 @@
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Email: </label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ $user->email }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
                             </div>

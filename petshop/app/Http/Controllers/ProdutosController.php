@@ -14,7 +14,7 @@ class ProdutosController extends Controller
 
   public function __construct()
   {
-      $this->middleware('auth', ['except' => 'index','show']);
+      $this->middleware('auth', ['except' => ['index','show']]);
   }
 
 
@@ -86,11 +86,11 @@ class ProdutosController extends Controller
       */
      public function show($id)
      {
-         $produtos = Produtos::find($id);
-         if(!$produtos){
+         $produto = Produtos::find($id);
+         if(!$produto){
            abort(404);
          }
-         return view ('produtos.details')->with('detailpage', $produtos);
+         return view ('produtos.show')->with('produto', $produto);
      }
 
      /**
@@ -102,13 +102,14 @@ class ProdutosController extends Controller
      public function edit($id)
      {
        if(Auth::user()->type == 2 || Auth::user()->type == 3){
-       $produtos = Produtos::find($id);
-       if(!$produtos){
+       $produto = Produtos::find($id);
+       if(!$produto){
          abort(404);
        }
-       return view ('produtos.edit')->with('detailpage', $produto);
+       return view ('produtos.edit')->with('produto', $produto);
      }else{
-       return view('denied');
+       session()->flash('error','Acesso negado!');
+       return redirect('/produtos');
      }
     }
 
@@ -153,8 +154,14 @@ class ProdutosController extends Controller
       */
      public function destroy($id)
      {
+       if(Auth::user()->type == 2){
          $produtos = Produtos::find($id);
          $produtos->delete();
          return redirect('produtos')->with('message', 'Produto excluído com sucesso!');
+       {
+         session()->flash('error','Você não tem permissaõ para fazer isso!');
+         return redirect('/users/home_admin');
+       }
      }
+   }
 }

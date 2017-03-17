@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Compras;
+use App\Produtos;
+use DB;
+use App\Quotation;
+use Auth;
 
 class ComprasController extends Controller
 {
@@ -21,7 +26,10 @@ class ComprasController extends Controller
      */
     public function index()
     {
-        //
+        $id = Auth::user()->id;
+        $compras = DB::select(DB::raw("SELECT p.nome, p.preco, c.quantidade, c.id FROM compras  c
+                  INNER JOIN produtos p ON p.id =  c.produto_id WHERE c.user_id = '$id' GROUP BY p.id"));
+        return view ('compras.index',['compras' => $compras]);
     }
 
     /**
@@ -31,7 +39,7 @@ class ComprasController extends Controller
      */
     public function create()
     {
-        return view('compras.create');
+        // return view('compras.create');
     }
 
     /**
@@ -40,22 +48,20 @@ class ComprasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-      $this->validate($request, [
-        'produto_id' => 'required',
-        // 'user_id' => 'required',
-        'quantidade' => 'required',
-      ]);
+      $user_id = Auth::user()->id;
+      $ids = session()->get('carrinho');
 
-      $compras = new Compras;
-      $compras->produto_id = $request->produto_id;
-      $compras->user_id = 1;
-      $compras->quantidade = $request->quantidade;
-      $compras->save();
-
-
-      return $this->create()->with('success', 'Produto comprado com sucesso!');
+      foreach ($ids as $i) {
+        $compras = new Compras;
+        $compras->produto_id = $i[0];
+        $compras->user_id = $user_id;
+        $compras->quantidade = $i[1];
+        $compras->save();
+      }
+      session()->flash('message','Compra realizada com sucesso!');
+      return redirect('/carrinho');
     }
 
     /**
@@ -101,5 +107,42 @@ class ComprasController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addCarrinho($produto_id, Request $request){
+      $this->validate($request,[
+        'quantidade' => 'required',
+      ]);
+      $qtd = $request->quantidade;
+      session()->push('carrinho',[$produto_id,$qtd]);
+      session()->flash('message','Produto adicionado ao carrinho!');
+      return redirect('/produtos')->with($produto_id);
+    }
+
+    public function removeCarrinho($produto_id){
+      $ids = session()->get('carrinho');
+      $indice = 0;
+      foreach ($ids as $i) {
+        if($i[0] == $produto_id){
+          $indice = $i;
+        }
+      }
+      session()->forget('carrinho', $indice);
+    }
+
+    public function verCarrinho(){
+      $prod = array();
+      $ids = session()->get('carrinho');
+      if($ids != null){
+      foreach ($ids as $i) {
+        $p = Produtos :: find($i);
+        array_push($prod,$i[0]);
+      }
+      $produtos = Produtos::find($prod);
+      return view('carrinho', compact('produtos', $produtos));
+    }else{
+      session()->flash('message','Carrinho vazio! Adicione produtos ao carrinho');
+      return redirect('/produtos');
+    }
     }
 }

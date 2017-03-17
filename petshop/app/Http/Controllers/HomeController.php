@@ -35,16 +35,22 @@ class HomeController extends Controller
         $produtos = Produtos :: all();
         return view('users.home_admin', compact('produtos'));
       }else{
-        return view('denied');
-      }
+        if(Auth::user()->type == 1){
+          session()->flash('error','Você não tem permissaõ para fazer isso!');
+          return redirect('/users/home_cliente');
+        }else{
+          session()->flash('error','Você não tem permissaõ para fazer isso!');
+          return redirect('/');
+        }
     }
+  }
 
     public function home_cliente(){
       if(Auth::user()->type == 1){
         $id = Auth::user()->id;
         return view('users.home_cliente',compact('id',$id));
       }else{
-        return view('denied');
-      }
+        session()->flash('error','Você não tem permissaõ para fazer isso!');
+        return redirect('/');      }
     }
 }

@@ -6,7 +6,7 @@
 
 @section('conteudo')
     <h1>Adicionar novo produto</h1>
-    <form class="w3-form" action="/produtos" method="POST" enctype="multipart/form-data">
+    <form class="w3-form" action="/produtos/create" method="post" enctype="multipart/form-data">
       {{ csrf_field() }}
       <label for="nome">Nome: </label>
       <input type="text" name="nome" value="" placeholder="Nome">

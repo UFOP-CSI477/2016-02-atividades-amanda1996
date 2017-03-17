@@ -40,7 +40,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   <div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-opennav w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     <a href="{{ url('/produtos') }}" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-    <a href="{{ url('/users/home_cliente/1') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Área do Cliente</a>
+    <a href="{{ url('/users/home_cliente/') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Área do Cliente</a>
     <a href="{{ url('/users/home_admin') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Área do Administrador</a>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
@@ -48,11 +48,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
           <li><a href="{{ route('login') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Login</a></li>
           <li><a href="{{ route('register') }}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Criar conta</a></li>
       @else
+          <li><a href="{{route('verCarrinho')}}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Ver Carrinho</a></li>
           <li class="dropdown">
               <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" data-toggle="dropdown" role="button" aria-expanded="false">
                   {{ Auth::user()->name }} <span class="caret"></span>
               </a>
-
               <ul class="dropdown-menu" role="menu">
                   <li>
                       <a href="{{ route('logout') }}"
@@ -72,10 +72,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     </div>
   </div>
 
+
   <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
     <a href="{{ url('/produtos') }}" class="w3-bar-item w3-button w3-padding-large">Home</a>
-    <a href="{{ url ('/users/home_cliente/1')}}" class="w3-bar-item w3-button w3-padding-large">Área do Cliente</a>
+    <a href="{{ url ('/users/home_cliente')}}" class="w3-bar-item w3-button w3-padding-large">Área do Cliente</a>
     <a href="{{ url ('/users/home_admin')}}" class="w3-bar-item w3-button w3-padding-large">Área do Administrador</a>
   </div>
 </div>
@@ -88,6 +89,16 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <!-- First Grid -->
 <center>
     <div class="w3-row-padding w3-padding-64 w3-container">
+      @if(Session::has('error'))
+        <div class="alert alert-danger">
+          {{Session::get('error')}}
+        </div>
+      @endif
+      @if(Session::has('message'))
+        <div class="alert alert-info">
+          {{Session::get('message')}}
+        </div>
+      @endif
       @yield('conteudo')
     </div>
 </center>
