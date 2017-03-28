@@ -1,0 +1,99 @@
+.login__check {
+    position: absolute;
+    top: 16rem;
+    left: 13.5rem;
+    width: 14rem;
+    height: 2.8rem;
+    background: #fff;
+    transform-origin: 0 100%;
+    transform: rotate(-45deg);
+}
+.underline {
+    background: none !important;
+    background-image: none;
+    border: 1px solid #c8c7cc;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0 0 0 0 !important;
+    color: #48D1CC;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.2;
+    padding: 5px 4px;
+    transition-duration: 0.1s;
+    box-shadow: none !important;
+    transition: border 300ms ease-out;
+}
+.gestando_button{
+    font-size: 1.5rem;
+    border-radius: 3rem;
+}
+.login {
+    position: relative;
+    height: 100%;
+    background: linear-gradient(to bottom, #de9494 0%, rgba(0, 0, 0, 0) 100%);
+    transition: opacity 0.1s, transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25), -webkit-transform 0.3s cubic-bezier(0.17, -0.65, 0.665, 1.25);
+    transform: scale(1);
+}
+.login__submit {
+    position: relative;
+    width: 20%;
+    height: 4rem;
+    margin: 5rem 0 2.2rem;
+    border-color:#de9494;
+    color: #fff;
+    background: #de9494;
+    font-size: 1.5rem;
+    border-radius: 3rem;
+    cursor: pointer;
+    overflow: hidden;
+    transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
+}
+.h3_login{
+  color: #48D1CC;
+}
+label{
+  color: #333;
+}
+.label-gestante{
+  color: #de9494;
+
+}
+.input-gestante{
+  color: #0190a1;
+  border-radius: 3rem;
+
+}
+.navbar-default {
+  background-color: #ffffff;
+  opacity:0.65;
+	-moz-opacity: 0.65;
+	filter: alpha(opacity=65);
+}
+.carousel-inner {
+  align: center;
+  width: 50%; /* Largura */
+  height: 30%; /* Altura */
+}
+.slider {
+    background: url(slide3.jpg) center no-repeat.
+    height: 200px;
+    overflow: hidden;
+}
+.side-gestante{
+  background-color: #a1c8b8;
+}
+.i-color{
+  color: #cd5c5c;
+}
+.div_gestante{
+color: #de9494;
+background-color: #a1c8b8;
+border-color: #a1c8b8x;
+padding: 10px 15px;
+border-bottom: 1px solid transparent;
+border-top-left-radius: 3px;
+border-top-right-radius: 3px;
+
+}
